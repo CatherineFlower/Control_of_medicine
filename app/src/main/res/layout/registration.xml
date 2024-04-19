@@ -85,7 +85,4 @@
         android:backgroundTint="#FFFFFF"
         />
 
-
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
