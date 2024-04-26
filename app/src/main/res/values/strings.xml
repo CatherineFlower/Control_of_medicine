@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Control_of_medicine</string>
+    <string name="Sign" />
+    <string name="Вход" />
+    <string name="Регистрация" />
 </resources>

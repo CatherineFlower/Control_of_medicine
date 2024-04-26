@@ -8,6 +8,17 @@
     android:background="@drawable/back"
     tools:context=".MainActivity">
 
+    <androidx.fragment.app.FragmentContainerView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/navigation_sing"
+    />
 
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/navigation_sing"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/menu_navigation_sign" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
