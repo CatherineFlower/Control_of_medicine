@@ -1,6 +1,10 @@
 <resources>
-    <string name="app_name">Control_of_medicine</string>
-    <string name="Sign" />
-    <string name="Вход" />
-    <string name="Регистрация" />
+    <string name="app_name" translatable="false">Control_of_medicine</string>
+    <string name="Sign" translatable="false">Вход</string>
+    <string name="Reg" translatable="false">Регистрация</string>
+    <string name="Словарь">Словарь</string>
+    <string name="Карты">Карты</string>
+    <string name="Приём">Приём</string>
+    <string name="Лекарства">Лекарства</string>
+    <string name="Профиль">Профиль</string>
 </resources>

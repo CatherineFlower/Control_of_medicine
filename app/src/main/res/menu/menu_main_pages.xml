@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/navigationDict"
+        android:icon="@drawable/book_black"
+        app:showAsAction="ifRoom"
+        android:title="@string/Словарь"
+        tools:ignore="HardcodedText" />
+
+    <item
+        android:id="@+id/navigationMap"
+        android:icon="@drawable/location_black"
+        app:showAsAction="ifRoom"
+        android:title="@string/Карты"
+        tools:ignore="HardcodedText" />
+
+    <item
+        android:id="@+id/navigationHome"
+        android:icon="@drawable/home_black"
+        app:showAsAction="ifRoom"
+        android:title="@string/Приём"
+        tools:ignore="HardcodedText" />
+
+    <item
+        android:id="@+id/navigationMed"
+        android:icon="@drawable/medicine_black"
+        app:showAsAction="ifRoom"
+        android:title="@string/Лекарства"
+        tools:ignore="HardcodedText" />
+
+    <item
+        android:id="@+id/navigationAcc"
+        android:icon="@drawable/ic_action_name"
+        app:showAsAction="ifRoom"
+        android:title="@string/Профиль"
+        tools:ignore="HardcodedText" />
+
+</menu>

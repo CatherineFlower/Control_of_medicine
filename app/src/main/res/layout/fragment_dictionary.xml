@@ -5,17 +5,15 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/back"
-    tools:context=".feature.ui.main.MainActivity">
+    tools:context=".feature.ui.main_pages.DictionaryFragment">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar"
+        android:background="#B5C4DA"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="Домашняя страница"
-        android:background="#B5C4DA"
-        />
+        app:title="Список лекарств" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler"
@@ -26,7 +24,6 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar"
-        tools:listitem="@layout/item_home" />
-
+        tools:listitem="@layout/item_dict" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

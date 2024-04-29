@@ -2,11 +2,11 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/back"
-    tools:context=".feature.ui.main.RegistrationFragment">
+    android:layout_gravity="center"
+    tools:context=".feature.ui.main.SignFragment">
 
     <ImageView
         android:id="@+id/welcome"
@@ -14,7 +14,7 @@
         android:layout_height="130dp"
         android:layout_marginHorizontal="115dp"
         android:layout_marginTop="78dp"
-        android:src="@drawable/list"
+        android:src="@drawable/welcomeback"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -29,7 +29,7 @@
         android:layout_marginTop="55dp"
         android:background="#F2FBFA"
         android:drawablePadding="20dp"
-        android:hint="Почта для регистрации"
+        android:hint="Почта"
         android:inputType="textEmailAddress"
         android:padding="10dp"
         android:textColor="@color/black"
@@ -59,10 +59,10 @@
         tools:ignore="MissingConstraints,TextFields" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/loginbtn"
+        android:id="@+id/signbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Зарегистрироваться"
+        android:text="Войти"
         android:textSize="20dp"
         android:layout_margin="35dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -72,17 +72,42 @@
         />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/loginGoogleBtn"
+        android:id="@+id/signGoogleBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Зарегистрироваться с помощью Google"
+        android:text="Войти с помощью Google"
         android:textSize="16dp"
         android:textColor="#000000"
         android:layout_margin="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginbtn"
+        app:layout_constraintTop_toBottomOf="@+id/signbtn"
         android:backgroundTint="#FFFFFF"
         />
+
+    <TextView
+        android:id="@+id/or"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:text="или"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/loginbtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signGoogleBtn" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/loginbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:backgroundTint="#6F7696"
+        android:text="Зарегистрироваться"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/or" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
