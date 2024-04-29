@@ -44,22 +44,17 @@ public class MainPagesActivity extends AppCompatActivity {
 
     @SuppressLint("NonConstantResourceId")
     private void onNavigationItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.navigationDict:
-                setFragment(DictionaryFragment.newInstance());
-                break;
-            case R.id.navigationMap:
-                setFragment(MapFragment.newInstance());
-                break;
-            case R.id.navigationHome:
-                setFragment(HomeFragment.newInstance());
-                break;
-            case R.id.navigationMed:
-                setFragment(MedFragment.newInstance());
-                break;
-            case R.id.navigationAcc:
-                setFragment(AccountFragment.newInstance());
-                break;
+        int itemId = item.getItemId();
+        if (itemId == R.id.navigationDict) {
+            setFragment(DictionaryFragment.newInstance());
+        } else if (itemId == R.id.navigationMap) {
+            setFragment(MapFragment.newInstance());
+        } else if (itemId == R.id.navigationHome) {
+            setFragment(HomeFragment.newInstance());
+        } else if (itemId == R.id.navigationMed) {
+            setFragment(MedFragment.newInstance());
+        } else if (itemId == R.id.navigationAcc) {
+            setFragment(AccountFragment.newInstance());
         }
     }
     private void setFragment(Fragment fragment) {
