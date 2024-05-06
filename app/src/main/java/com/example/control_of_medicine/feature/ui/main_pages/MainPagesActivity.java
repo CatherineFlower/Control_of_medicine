@@ -1,30 +1,23 @@
 package com.example.control_of_medicine.feature.ui.main_pages;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import androidx.activity.EdgeToEdge;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
 
 import com.example.control_of_medicine.R;
 import com.example.control_of_medicine.databinding.ActivityMainPagesBinding;
-import com.example.control_of_medicine.feature.ui.main.SignFragment;
-import com.google.android.material.navigation.NavigationBarView;
+import com.example.control_of_medicine.feature.ui.main.RegistrationFragment;
 
 public class MainPagesActivity extends AppCompatActivity {
 
     private ActivityMainPagesBinding binding;
 
-    public static Intent newIntent(Context context) {
+    public static Intent creatIntent(Context context) {
         return new Intent(context, MainPagesActivity.class);
     }
 

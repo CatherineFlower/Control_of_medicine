@@ -13,9 +13,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.control_of_medicine.R;
+import com.example.control_of_medicine.databinding.FragmentSignBinding;
 import com.example.control_of_medicine.feature.presentation.SignViewModel;
 
 public class SignFragment extends Fragment {
+
+    private FragmentSignBinding binding;
 
     private SignViewModel mViewModel;
 
@@ -26,7 +29,16 @@ public class SignFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_sign, container, false);
+        binding = FragmentSignBinding.inflate(getLayoutInflater());
+
+        binding.loginbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setFragment();
+            }
+        });
+
+        return binding.getRoot();
     }
 
     @Override
@@ -34,6 +46,12 @@ public class SignFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         mViewModel = new ViewModelProvider(this).get(SignViewModel.class);
         // TODO: Use the ViewModel
+    }
+
+    private void setFragment() {
+        getParentFragmentManager().beginTransaction()
+                .replace(R.id.fragment_reg_sign, RegistrationFragment.newInstance(), null)
+                .commit();
     }
 
 }

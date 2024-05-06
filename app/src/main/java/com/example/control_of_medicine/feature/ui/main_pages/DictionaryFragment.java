@@ -13,9 +13,18 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.control_of_medicine.R;
+import com.example.control_of_medicine.data.DictionaryItemRepository;
+import com.example.control_of_medicine.databinding.FragmentDictionaryBinding;
+import com.example.control_of_medicine.domain.model.DictionaryItem;
+import com.example.control_of_medicine.domain.model.DictionaryItemAdapter;
+import com.example.control_of_medicine.domain.util.OnDictionaryItemsLoaded;
 import com.example.control_of_medicine.feature.presentation.DictionaryViewModel;
 
+import java.util.List;
+
 public class DictionaryFragment extends Fragment {
+
+    private FragmentDictionaryBinding binding;
 
     private DictionaryViewModel mViewModel;
 
@@ -26,7 +35,16 @@ public class DictionaryFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_dictionary, container, false);
+        binding = FragmentDictionaryBinding.inflate(getLayoutInflater());
+
+        DictionaryItemRepository.getItems(items -> {
+//            Log.wtf("LOGG", items.toString());
+            DictionaryItemAdapter adapter = new DictionaryItemAdapter();
+            binding.recycler.setAdapter(adapter);
+            adapter.setItems(items);
+        });
+
+        return binding.getRoot();
     }
 
     @Override

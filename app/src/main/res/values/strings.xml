@@ -7,4 +7,10 @@
     <string name="Приём">Приём</string>
     <string name="Лекарства">Лекарства</string>
     <string name="Профиль">Профиль</string>
+    <string name="google_reg">Зарегистрироваться с помощью Google</string>
+    <string name="login">Зарегистрироваться</string>
+    <string name="password">Пароль</string>
+    <string name="email_reg">Почта для регистрации</string>
+    <string name="or">или</string>
+    <string name="sign">Войти</string>
 </resources>
