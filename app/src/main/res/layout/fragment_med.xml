@@ -7,23 +7,23 @@
     android:layout_height="match_parent"
     tools:context=".feature.ui.main_pages.MedFragment">
 
-    <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/toolbar"
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/navigation_main"
         android:background="#B5C4DA"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:title="Список лекарств" />
+        app:layout_constraintBottom_toStartOf="@id/recycler"
+        app:menu="@menu/menu_med_fragment" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:paddingBottom="80dp"
         android:clipToPadding="false"
+        android:paddingBottom="80dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintTop_toBottomOf="@+id/navigation_main"
         tools:listitem="@layout/item_dict" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
