@@ -52,6 +52,8 @@ public class RegistrationFragment extends Fragment {
             }
         });
 
+        FirebaseAuth.getInstance().getCurrentUser();
+
         return binding.getRoot();
     }
 
@@ -104,10 +106,9 @@ public class RegistrationFragment extends Fragment {
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         mViewModel = new ViewModelProvider(this).get(RegistrationViewModel.class);
-        // TODO: Use the ViewModel
     }
 
     private void setFragment() {

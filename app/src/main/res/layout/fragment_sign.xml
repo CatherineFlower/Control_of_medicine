@@ -75,6 +75,7 @@
         android:id="@+id/signGoogleBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/googleg_standard_color_18"
         android:text="Войти с помощью Google"
         android:textSize="16dp"
         android:textColor="#000000"
