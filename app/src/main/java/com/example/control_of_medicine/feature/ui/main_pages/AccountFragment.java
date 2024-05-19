@@ -13,10 +13,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.control_of_medicine.R;
+import com.example.control_of_medicine.databinding.FragmentAccountBinding;
+import com.example.control_of_medicine.databinding.FragmentHomeBinding;
 import com.example.control_of_medicine.feature.presentation.AccountViewModel;
 
 public class AccountFragment extends Fragment {
 
+    private FragmentAccountBinding binding;
     private AccountViewModel mViewModel;
 
     public static AccountFragment newInstance() {
@@ -26,14 +29,15 @@ public class AccountFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_account, container, false);
+        binding = FragmentAccountBinding.inflate(getLayoutInflater());
+
+        return binding.getRoot();
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         mViewModel = new ViewModelProvider(this).get(AccountViewModel.class);
-        // TODO: Use the ViewModel
     }
 
 }

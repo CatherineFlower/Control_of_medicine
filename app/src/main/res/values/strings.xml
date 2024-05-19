@@ -1,4 +1,6 @@
 <resources>
+    <string name="default_web_client_id" translatable="false">webClientId.apps.googleusercontent.com</string>
+
     <string name="app_name" translatable="false">Control_of_medicine</string>
     <string name="Sign" translatable="false">Вход</string>
     <string name="Reg" translatable="false">Регистрация</string>
@@ -15,4 +17,6 @@
     <string name="sign">Войти</string>
     <string name="Группы_лекарств">Группы лекарств</string>
     <string name="Болезни">Болезни</string>
+    <string name="search">Поиск</string>
+    <string name="No_medicine">Сегодня все таблетки приняты!</string>
 </resources>

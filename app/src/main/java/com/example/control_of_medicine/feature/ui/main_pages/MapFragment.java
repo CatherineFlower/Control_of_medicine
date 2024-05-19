@@ -13,10 +13,14 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.control_of_medicine.R;
+import com.example.control_of_medicine.databinding.FragmentHomeBinding;
+import com.example.control_of_medicine.databinding.FragmentMapBinding;
+import com.example.control_of_medicine.feature.presentation.AccountViewModel;
 import com.example.control_of_medicine.feature.presentation.MapViewModel;
 
 public class MapFragment extends Fragment {
 
+    private FragmentMapBinding binding;
     private MapViewModel mViewModel;
 
     public static MapFragment newInstance() {
@@ -26,14 +30,15 @@ public class MapFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_map, container, false);
+        binding = FragmentMapBinding.inflate(getLayoutInflater());
+
+        return binding.getRoot();
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         mViewModel = new ViewModelProvider(this).get(MapViewModel.class);
-        // TODO: Use the ViewModel
     }
 
 }

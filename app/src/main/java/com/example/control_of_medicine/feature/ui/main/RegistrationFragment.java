@@ -1,29 +1,37 @@
 package com.example.control_of_medicine.feature.ui.main;
 
-import androidx.lifecycle.ViewModelProvider;
+import static android.app.Activity.RESULT_OK;
 
+import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+
 import com.example.control_of_medicine.R;
 import com.example.control_of_medicine.databinding.FragmentRegistrationBinding;
 import com.example.control_of_medicine.feature.presentation.RegistrationViewModel;
-
 import com.example.control_of_medicine.feature.ui.main_pages.MainPagesActivity;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
-
-import java.util.Objects;
+import com.google.firebase.auth.GoogleAuthProvider;
 
 public class RegistrationFragment extends Fragment {
+
+    private static final String OAUTH_KEY = "1024344700440-ptbreogmjvqu4j1ruigjkb2t60vicds2.apps.googleusercontent.com";
 
     private FragmentRegistrationBinding binding;
 
@@ -32,6 +40,11 @@ public class RegistrationFragment extends Fragment {
     public static RegistrationFragment newInstance() {
         return new RegistrationFragment();
     }
+
+    private final ActivityResultLauncher<Intent> googleLoginLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> handleGoogleLoginResult(result)
+    );
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -52,9 +65,54 @@ public class RegistrationFragment extends Fragment {
             }
         });
 
+        binding.loginGoogleBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                loginWithGoogle();
+            }
+        });
+
         FirebaseAuth.getInstance().getCurrentUser();
 
         return binding.getRoot();
+    }
+
+    private void loginWithGoogle() {
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail() // optional
+                .build();
+        GoogleSignInClient client = GoogleSignIn.getClient(requireActivity().getApplicationContext(), gso);
+        Intent intent = client.getSignInIntent();
+        googleLoginLauncher.launch(intent);
+    }
+
+    private void handleGoogleLoginResult(ActivityResult result) {
+        if (result.getResultCode() == RESULT_OK) {
+            GoogleSignIn.getSignedInAccountFromIntent(result.getData())
+                    .addOnSuccessListener(googleSignInAccount -> {
+                        String tokenId = googleSignInAccount.getIdToken();
+                        firebaseAuthWithGoogle(tokenId);
+                    })
+                    .addOnFailureListener(e -> {
+                        Toast.makeText(requireActivity().getApplicationContext(), "Google error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    });
+        } else {
+            Toast.makeText(requireActivity().getApplicationContext(), "Google error", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void firebaseAuthWithGoogle(String tokenId) {
+        AuthCredential credential = GoogleAuthProvider.getCredential(tokenId, OAUTH_KEY);
+        FirebaseAuth.getInstance().signInWithCredential(credential)
+                .addOnSuccessListener(authResult -> {
+                    Toast.makeText(requireActivity().getApplicationContext(), "Google login success: " + authResult.getUser().getUid(), Toast.LENGTH_SHORT).show();
+                    RegistrationFragment.this.startActivity(MainPagesActivity
+                            .creatIntent(requireActivity().getApplicationContext()));
+                })
+                .addOnFailureListener(e -> {
+                    Toast.makeText(requireActivity().getApplicationContext(), "Google login error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                });
     }
 
     private void loginWithEmail() {
@@ -87,22 +145,14 @@ public class RegistrationFragment extends Fragment {
                     .creatIntent(requireActivity().getApplicationContext()));
         }).addOnFailureListener(e -> {
             if (e instanceof FirebaseAuthUserCollisionException) {
-                signinFirebase(email, password);
+                Toast.makeText(requireActivity().getApplicationContext(),
+                        "У вас уже есть аккаунт", Toast.LENGTH_SHORT).show();
+                setFragment();
             } else {
                 Toast.makeText(requireActivity().getApplicationContext(),
                         "SignUp error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-    }
-
-    private void signinFirebase(String email, String password) {
-        FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
-                .addOnSuccessListener(authResult -> {
-            Toast.makeText(requireActivity().getApplicationContext(),
-                    "Login success: " + authResult.getUser().getUid(), Toast.LENGTH_SHORT).show();
-//            showUser();
-        }).addOnFailureListener(e -> Toast.makeText(requireActivity().getApplicationContext(),
-                        "SignIn error: " + e.getMessage(), Toast.LENGTH_SHORT).show());
     }
 
     @Override

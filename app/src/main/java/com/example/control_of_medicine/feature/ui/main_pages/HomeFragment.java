@@ -13,10 +13,16 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.control_of_medicine.R;
+import com.example.control_of_medicine.data.DictionaryItemRepository;
+import com.example.control_of_medicine.data.HomeItemsRepository;
+import com.example.control_of_medicine.databinding.FragmentHomeBinding;
+import com.example.control_of_medicine.domain.model.DictionaryItemAdapter;
 import com.example.control_of_medicine.feature.presentation.HomeViewModel;
+import com.example.control_of_medicine.feature.presentation.RegistrationViewModel;
 
 public class HomeFragment extends Fragment {
 
+    private FragmentHomeBinding binding;
     private HomeViewModel mViewModel;
 
     public static HomeFragment newInstance() {
@@ -26,14 +32,24 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        binding = FragmentHomeBinding.inflate(getLayoutInflater());
+
+        HomeItemsRepository.getItems(items -> {
+//            Log.wtf("LOGG", items.toString());
+            if (items != null){
+                DictionaryItemAdapter adapter = new DictionaryItemAdapter();
+                binding.recycler.setAdapter(adapter);
+                adapter.setItems(items);
+            }
+        });
+
+        return binding.getRoot();
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         mViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
-        // TODO: Use the ViewModel
     }
 
 }
