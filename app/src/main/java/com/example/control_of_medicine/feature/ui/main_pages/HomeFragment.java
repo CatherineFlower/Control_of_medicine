@@ -17,6 +17,7 @@ import com.example.control_of_medicine.data.DictionaryItemRepository;
 import com.example.control_of_medicine.data.HomeItemsRepository;
 import com.example.control_of_medicine.databinding.FragmentHomeBinding;
 import com.example.control_of_medicine.domain.model.DictionaryItemAdapter;
+import com.example.control_of_medicine.domain.model.HomeItemAdapter;
 import com.example.control_of_medicine.feature.presentation.HomeViewModel;
 import com.example.control_of_medicine.feature.presentation.RegistrationViewModel;
 
@@ -37,7 +38,7 @@ public class HomeFragment extends Fragment {
         HomeItemsRepository.getItems(items -> {
 //            Log.wtf("LOGG", items.toString());
             if (items != null){
-                DictionaryItemAdapter adapter = new DictionaryItemAdapter();
+                HomeItemAdapter adapter = new HomeItemAdapter();
                 binding.recycler.setAdapter(adapter);
                 adapter.setItems(items);
             }

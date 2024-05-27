@@ -11,6 +11,8 @@
         android:roundIcon="@drawable/timer"
         android:supportsRtl="true"
         android:theme="@style/Theme.Control_of_medicine"
+        android:screenOrientation="sensorPortrait"
+        tools:ignore="DiscouragedApi"
         tools:targetApi="31">
         <activity
             android:name=".feature.ui.main.MainActivity"
@@ -21,6 +23,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".feature.ui.main_pages.MainPagesActivity"
+            />
     </application>
 
 </manifest>

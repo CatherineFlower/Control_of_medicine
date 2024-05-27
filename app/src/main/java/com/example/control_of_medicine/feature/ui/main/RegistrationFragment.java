@@ -17,6 +17,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.control_of_medicine.Keys;
 import com.example.control_of_medicine.R;
 import com.example.control_of_medicine.databinding.FragmentRegistrationBinding;
 import com.example.control_of_medicine.feature.presentation.RegistrationViewModel;
@@ -31,7 +32,8 @@ import com.google.firebase.auth.GoogleAuthProvider;
 
 public class RegistrationFragment extends Fragment {
 
-    private static final String OAUTH_KEY = "1024344700440-ptbreogmjvqu4j1ruigjkb2t60vicds2.apps.googleusercontent.com";
+    private Keys keys;
+    private final String OAUTH_KEY = Keys.getOauthKey();
 
     private FragmentRegistrationBinding binding;
 

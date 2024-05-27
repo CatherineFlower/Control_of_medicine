@@ -56,4 +56,7 @@ dependencies {
     implementation(libs.firebase.firestore)
     implementation(libs.firebase.ui.auth)
     implementation(libs.play.services)
+
+    //Add for MapKit Mobile SDK (Yandex)
+    implementation(libs.maps.mobile)
 }

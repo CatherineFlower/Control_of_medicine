@@ -27,6 +27,8 @@ public class MainPagesActivity extends AppCompatActivity {
         binding = ActivityMainPagesBinding.inflate(getLayoutInflater(), null, false);
         setContentView(binding.getRoot());
 
+        binding.navigationMain.setSelectedItemId(R.id.navigationHome);
+
         binding.navigationMain.setOnItemSelectedListener(menuItem -> {
             MainPagesActivity.this.onNavigationItemSelected(menuItem);
             return true;
