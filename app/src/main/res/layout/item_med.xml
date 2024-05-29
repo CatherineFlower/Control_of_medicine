@@ -24,26 +24,47 @@
 
         <TextView
             android:id="@+id/description"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/type"
             app:layout_constraintVertical_chainStyle="packed"
             tools:text="example description of medicine" />
+        <!--            app:layout_constraintTop_toBottomOf="@id/daysRepeat"-->
 
         <TextView
             android:id="@+id/type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            app:layout_constraintBottom_toBottomOf="@+id/name"
             app:layout_constraintStart_toStartOf="@+id/name"
-            app:layout_constraintTop_toTopOf="@+id/description"
+            app:layout_constraintTop_toBottomOf="@+id/name"
             app:layout_constraintVertical_bias="0.533"
             app:layout_constraintVertical_chainStyle="packed"
             tools:text="example type" />
+        <TextView
+            android:id="@+id/dose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintStart_toEndOf="@+id/type"
+            app:layout_constraintTop_toBottomOf="@+id/name"
+            app:layout_constraintVertical_bias="0.533"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="example dose" />
+
+
+<!--        <TextView-->
+<!--            android:id="@+id/daysRepeat"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:layout_constraintStart_toStartOf="@+id/description"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/type"-->
+<!--            app:layout_constraintVertical_chainStyle="packed"-->
+<!--            tools:text="example day repeat" />-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

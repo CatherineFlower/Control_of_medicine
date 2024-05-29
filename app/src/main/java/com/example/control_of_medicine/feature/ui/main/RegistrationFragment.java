@@ -19,6 +19,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.control_of_medicine.Keys;
 import com.example.control_of_medicine.R;
+import com.example.control_of_medicine.data.UserRepository;
 import com.example.control_of_medicine.databinding.FragmentRegistrationBinding;
 import com.example.control_of_medicine.feature.presentation.RegistrationViewModel;
 import com.example.control_of_medicine.feature.ui.main_pages.MainPagesActivity;
@@ -140,11 +141,16 @@ public class RegistrationFragment extends Fragment {
     private void signupFirebase(String email, String password) {
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
                 .addOnSuccessListener(authResult -> {
-            Toast.makeText(requireActivity().getApplicationContext(), "Login success: "
-                    + authResult.getUser().getUid(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(requireActivity().getApplicationContext(), "Login success: "
+                            + authResult.getUser().getUid(), Toast.LENGTH_SHORT).show();
 
-            RegistrationFragment.this.startActivity(MainPagesActivity
-                    .creatIntent(requireActivity().getApplicationContext()));
+                    RegistrationFragment.this.startActivity(MainPagesActivity
+                            .creatIntent(requireActivity().getApplicationContext()));
+
+                    //Здесь написать логику добавления документа юзера с коллекциями (таблетки, время) в Firestore, сделать отдельный класс и метод!!!
+
+                    UserRepository.createUser(authResult.getUser());
+
         }).addOnFailureListener(e -> {
             if (e instanceof FirebaseAuthUserCollisionException) {
                 Toast.makeText(requireActivity().getApplicationContext(),
@@ -165,7 +171,7 @@ public class RegistrationFragment extends Fragment {
 
     private void setFragment() {
         getParentFragmentManager().beginTransaction().replace(R.id.fragment_reg_sign,
-                SignFragment.newInstance(), null).commit();
+                SignFragment.newInstance(), null).addToBackStack("Go back").commit();
     }
 
 }

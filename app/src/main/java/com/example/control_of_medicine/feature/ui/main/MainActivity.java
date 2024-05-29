@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private void setFragment() {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_reg_sign, SignFragment.newInstance(), null)
+                .addToBackStack("Go back")
                 .commit();
     }
 }

@@ -1,7 +1,7 @@
 <resources>
     <string name="default_web_client_id" translatable="false">webClientId.apps.googleusercontent.com</string>
 
-    <string name="app_name" translatable="false">Control_of_medicine</string>
+    <string name="app_name" translatable="false">ControlMed</string>
     <string name="Sign" translatable="false">Вход</string>
     <string name="Reg" translatable="false">Регистрация</string>
     <string name="Словарь">Словарь</string>
@@ -19,4 +19,16 @@
     <string name="Болезни">Болезни</string>
     <string name="search">Поиск</string>
     <string name="No_medicine">Сегодня все таблетки приняты!</string>
+
+    <string name="network_error_message">Network error</string>
+    <string name="remote_error_message">Remote server error</string>
+    <string name="unknown_error_message">Unknown error</string>
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add_meds">Добавить лекарства</string>
+    <string name="name_med">Название лекарства</string>
+    <string name="type_med">Тип лекарства</string>
+    <string name="desc_med">Описание лекарства</string>
+    <string name="dose">Доза</string>
+    <string name="add_disease">Добавить болезнь</string>
 </resources>

@@ -14,9 +14,9 @@ public class DictionaryItemViewHolder extends ViewHolder {
     }
 
     public void bind(DictionaryItem item, int position) {
-        binding.id.setText(String.valueOf(position + 1));
         binding.name.setText(item.getName());
-        binding.description.setText(item.getDescription());
+        String string = item.getDescription().replace("\\n ", "\n");
+        binding.description.setText(string);
         binding.type.setText(item.getType());
     }
 }

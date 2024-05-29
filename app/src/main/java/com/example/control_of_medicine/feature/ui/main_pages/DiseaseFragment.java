@@ -13,45 +13,36 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.control_of_medicine.R;
-import com.example.control_of_medicine.data.DictionaryItemRepository;
-import com.example.control_of_medicine.data.MedItemRepository;
-import com.example.control_of_medicine.databinding.FragmentMedBinding;
-import com.example.control_of_medicine.domain.model.DictionaryItemAdapter;
-import com.example.control_of_medicine.domain.model.MedItemAdapter;
-import com.example.control_of_medicine.feature.presentation.MedViewModel;
+import com.example.control_of_medicine.databinding.FragmentDiseaseBinding;
+import com.example.control_of_medicine.feature.presentation.AddMedsViewModel;
+import com.example.control_of_medicine.feature.presentation.DiseaseViewModel;
 
-public class MedFragment extends Fragment {
+public class DiseaseFragment extends Fragment {
 
-    private FragmentMedBinding binding;
-    private MedViewModel mViewModel;
+    private DiseaseViewModel mViewModel;
+    private FragmentDiseaseBinding binding;
 
-    public static MedFragment newInstance() {
-        return new MedFragment();
+    public static DiseaseFragment newInstance() {
+        return new DiseaseFragment();
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        binding = FragmentMedBinding.inflate(getLayoutInflater());
+        binding = FragmentDiseaseBinding.inflate(getLayoutInflater());
 
-        binding.virusGrFr.setOnClickListener(new View.OnClickListener() {
+        binding.medsFr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setFragment(DiseaseFragment.newInstance());
+                setFragment(MedFragment.newInstance());
             }
         });
+
         binding.addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setFragment(AddMedsFragment.newInstance());
+                setFragment(AddDiseaseFragment.newInstance());
             }
-        });
-
-        MedItemRepository.getItems(items -> {
-//            Log.wtf("LOGG", items.toString());
-            MedItemAdapter adapter = new MedItemAdapter();
-            binding.recycler.setAdapter(adapter);
-            adapter.setItems(items);
         });
 
         return binding.getRoot();
@@ -60,7 +51,8 @@ public class MedFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(MedViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(DiseaseViewModel.class);
+        // TODO: Use the ViewModel
     }
 
     private void setFragment(Fragment fragment) {
@@ -69,5 +61,4 @@ public class MedFragment extends Fragment {
                 .addToBackStack("Go back")
                 .commit();
     }
-
 }
